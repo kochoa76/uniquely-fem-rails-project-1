@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -22,6 +22,7 @@ gem 'dotenv-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'activestorage', '= 5.2.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -60,7 +61,7 @@ group :development do
   gem 'pry'
   gem "database_cleaner"
   gem "rack_session_access"
-end 
+end
 
 group :test do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
