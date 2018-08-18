@@ -9,7 +9,8 @@ class User < ApplicationRecord
   # helper_method :set_anonymous_username
   has_secure_password
 
-  def self.set_anonymous_username
-    username = "anonymous#{User.last.id + 1}" if username.nil?
+  def set_anonymous_username
+    @user = User.find(username: params[:username])
+    @user.username = "anonymous#{User.last.id + 1}" if @user.username.nil?
   end
 end
