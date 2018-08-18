@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :email, uniqueness: true
   before_save :set_anonymous_username
-  helper_method :set_anonymous_username
+  # helper_method :set_anonymous_username
   has_secure_password
 
   def self.set_anonymous_username
