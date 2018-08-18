@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: 
-  channel_prefix:
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:3000" } %>
+  channel_prefix: uniquely-fem-rails-project-1_production

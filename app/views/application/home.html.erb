@@ -1,0 +1,9 @@
+Welcome to UniquelyFem, an app that alleviates obstacles unique to women in the job search.
+
+<% if session[:user_id] %>
+  <h1><%= @user.username %></h1>
+  <h2>Email: <%= @user.email %></h2>
+  <h2>Facebook UID: <%= @user.uid %></h2>
+<% else %>
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<% end %>
