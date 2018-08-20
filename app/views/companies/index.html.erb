@@ -1,1 +1,19 @@
-<h2> show all companies on website - search filter? </h2> 
+<h2> All Companies </h2>
+<ul>
+  <table>
+    <% @companies.each do |company|%>
+      <th>Name: <%= company.name %></th>
+      <br></br>
+      <td>Size: <%= company.size %> <td>
+      <% if company.reviews.exists? %>
+      <%= link_to "See #{company.name} reviews", company_review_path(company.reviews) %>
+      <% end %>
+      <%= link_to "Submit a review for this Company", new_company_review_path(company) %>
+    </table>
+    <% end %>
+
+    <% if logged_in && @user == current_user %>
+        <p>
+          <%= link_to "My Account", user %>
+          <%= link_to "My Reviews", review_path(current_user.review) %>
+      <% end %>

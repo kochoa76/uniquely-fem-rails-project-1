@@ -9,20 +9,24 @@ class CompaniesController < ApplicationController
 
   def create
     @company= Company.create(company_params)
-    if @company.save
-      redirect_to @company
+      if @company.save
+        redirect_to company_path(@company)
+      end
     end
-  end
+
 
   def edit
   end
 
   def show
+     @company = Company.find(params[:id])
   end
 
   private
 
   def company_params
-    params.require(:company).permit(:name, :size)
+    params.require(:company).permit(
+      :name,
+      :size)
   end
 end
