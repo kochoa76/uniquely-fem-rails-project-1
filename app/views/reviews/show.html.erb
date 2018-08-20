@@ -1,0 +1,8 @@
+<h2> My Reviews </h2>
+
+<% if logged_in && @user == current_user %>
+  <p>
+    <% @user.reviews.each do |review| %>
+      <%= review.content %>
+      <%end %>
+      <% end %>
