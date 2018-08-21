@@ -2,20 +2,20 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @company= Company.create(id: params[:company_id])
   end
 
 
   def create
         @review = Review.create(review_params)
+        raise params.inspect
         @review.user_id = current_user.id
           if @review.save
              redirect_to company_reviews_path(@review), :notice => "Thank you for submitting your review"
           else
-             redirect_to new_company_review, :notice => "boxes can't be blank"
+             redirect_to new_company_review_path, :notice => "boxes can't be blank"
           end
         end
-
-
 
 
     def show

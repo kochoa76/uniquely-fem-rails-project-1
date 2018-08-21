@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<%= form_for(@review, {controller: "reviews", action: "show", method: :post}) do |f| %>
+<%= form_for([@company, @review], {url: company_reviews_path, method: :post}) do |f| %>
 
 
   <%= f.label :company_name, "Company Name:" %>
