@@ -1,7 +1,27 @@
+<!-- <% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@review.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
 
-<h2> Create a Review for <%=@company.name%> </h2>
+    <ul>
+    <% @review.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %> -->
+<h2> Create a Review </h2> 
 <%= form_for([@company, @review]) do |f| %>
 
+
+  <%= f.label :company_name, "Company Name:" %>
+      <%= f.text_field :company_name %>
+      <br></br>
+      <%= f.label :company_size, "Company Size:" %>
+      <%= f.number_field :company_size %>
+      <br></br>
       <%= f.label :salary, "Your Salary:" %>
       <%= f.number_field :salary %>
       <br></br>

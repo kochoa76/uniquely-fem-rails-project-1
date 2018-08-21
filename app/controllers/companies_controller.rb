@@ -22,6 +22,15 @@ class CompaniesController < ApplicationController
      @company = Company.find(params[:id])
   end
 
+  def destroy
+      @company= Company.find(params[:id])
+      if @user == current_user
+        @company.delete
+        redirect_to root_path
+      end
+    end 
+
+
   private
 
   def company_params

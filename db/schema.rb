@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_215246) do
+ActiveRecord::Schema.define(version: 2018_08_21_171715) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 2018_08_20_215246) do
     t.boolean "women_exec_roles"
     t.boolean "promo_opps"
     t.boolean "recommend"
-    t.string "company_name"
-    t.integer "company_size"
   end
 
   create_table "users", force: :cascade do |t|
