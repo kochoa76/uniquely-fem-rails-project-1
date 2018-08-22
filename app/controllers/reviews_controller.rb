@@ -18,8 +18,9 @@ class ReviewsController < ApplicationController
       if !params[:company_id]
         @review = Review.create(reviews_params)
         @review.user_id = current_user.id
+
           if @review.save
-            redirect_to company_reviews_path(@review), :notice => "Thank you for submitting your review"
+            render company_review_path(@review), :notice => "Thank you for submitting your review"
           else
              redirect_to new_company_review_path, :notice => "boxes can't be blank"
           end
@@ -63,7 +64,7 @@ class ReviewsController < ApplicationController
             @review = @company.reviews.find(params[:id])
             if @review.user_id == current_user.id
               @review.destroy
-              redirect_to company_path 
+              redirect_to company_path
             end
           end
 
@@ -72,6 +73,7 @@ class ReviewsController < ApplicationController
 
   def reviews_params
     params.require(:review).permit(
+      :company_name,
       :user_id,
       :company_id,
       :content,

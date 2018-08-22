@@ -12,15 +12,15 @@
     </ul>
   </div>
 <% end %> -->
-<h2> Create a Review </h2> 
+<h2> Create a Review </h2>
 <%= form_for([@company, @review]) do |f| %>
-
-
   <%= f.label :company_name, "Company Name:" %>
-      <%= f.text_field :company_name %>
-      <br></br>
-      <%= f.label :company_size, "Company Size:" %>
-      <%= f.number_field :company_size %>
+  <%= f.text_field :company_name, list: "companies_autocomplete" %>
+      <datalist id="companies_autocomplete">
+        <% Company.all.each do |company| %>
+        <option value="<%= company.name %>">
+          <% end %>
+      </datalist>
       <br></br>
       <%= f.label :salary, "Your Salary:" %>
       <%= f.number_field :salary %>
