@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
   def new
     if !params[:company_id]
       @review = Review.new
+      @review.build_company
     else
       @review = Review.new
       @company = Company.find(params[:company_id])
@@ -17,19 +18,19 @@ class ReviewsController < ApplicationController
   def create
       if !params[:company_id]
         @review = Review.create(reviews_params)
+        @company = params[:review][:company_name]
         @review.user_id = current_user.id
-
           if @review.save
-            render company_review_path(@review), :notice => "Thank you for submitting your review"
+            redirect_to company_reviews_path(@review.company), :notice => "Thank you for submitting your review"
           else
-             redirect_to new_company_review_path, :notice => "boxes can't be blank"
+             redirect_to user_path(current_user), :notice => "boxes can't be blank"
           end
         else
           @company = Company.find(params[:company_id])
           @review = @company.reviews.create(reviews_params)
           @review.user_id = current_user.id
             if @review.save
-               render company_review_path(@review), :notice => "Thank you for submitting your review"
+               redirect_to company_reviews_path(@review.company), :notice => "Thank you for submitting your review"
             else
                redirect_to new_company_review_path, :notice => "boxes can't be blank"
             end
@@ -39,8 +40,9 @@ class ReviewsController < ApplicationController
 
 
     def show
+         @user = User.find(params[:user_id])
          @review = Review.find(params[:id])
-         @company = Company.find(params[:company_id])
+
          redirect_to :controller => 'reviews', :action => 'show'
      end
 

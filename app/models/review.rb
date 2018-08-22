@@ -2,6 +2,7 @@ class Review < ApplicationRecord
   belongs_to :company
   belongs_to :user
 
+
   def company_name=(name)
      self.company = Company.find_or_create_by(name: name)
   end
