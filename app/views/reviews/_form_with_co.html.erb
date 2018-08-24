@@ -16,7 +16,12 @@
 <%= form_for(@review) do |f| %>
       <%= f.fields_for :company, @review.build_company do |company| %>
       <%= company.label :name, "Company Name:" %>
-      <%= company.text_field :name %>
+      <%= company.text_field :name, list: "companies_autocomplete" %>
+        <datalist id= "companies_autocomplete">
+            <% Company.all.each do |company| %>
+            <option value="<%=company.name%>">
+              <%end%> 
+        </datalist>
       <br></br>
       <%= company.label :size, "Company Size:" %>
       <%= company.number_field :size %>

@@ -7,8 +7,8 @@
       <%= link_to "See #{company.name} reviews", company_reviews_path(company) %>
       <% end %>
       <%= link_to "Submit a review for this Company", new_company_review_path(company) %>
-      <% if current_user.admin %>
-      <%= button_to "Delete Company", company_path(company), :method => :delete, :class => "delete", :confirm => "Are you sure ?"%>
+      <% if logged_in && current_user.admin %>
+      <%= button_to "Delete Company", company_path(company), :method => :delete, :class => "delete", :confirm => "Are you sure?"%>
       <% end %>
     </td>
     </table>

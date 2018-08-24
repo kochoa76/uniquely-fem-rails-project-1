@@ -14,7 +14,6 @@ class CompaniesController < ApplicationController
       end
     end
 
-
   def edit
   end
 
@@ -24,12 +23,9 @@ class CompaniesController < ApplicationController
 
   def destroy
       @company= Company.find(params[:id])
-      if @user == current_user
         @company.delete
-        redirect_to root_path
+        redirect_to companies_path
       end
-    end
-
 
   private
 

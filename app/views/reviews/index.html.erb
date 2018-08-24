@@ -1,6 +1,5 @@
 <h2>All of the reviews by <%=@company.name%> </h2>
 <table>
-  <%= @company.size %> 
   <th><%= @company.name %></th>
     <% @company.reviews.each do |review| %>
       <tr><%= review.user.username %> says:
@@ -15,6 +14,7 @@
             <%= link_to "Edit Review", edit_company_review_path(@company, review) %>
             <%= button_to "Delete Review", company_review_path(@company, review), :method => :delete, :class => "delete", :confirm => "Are you sure ?"%>
             <%= button_to "See Company", company_path(@company), :method => :get %>
+            <%= button_to "See all companies", companies_url, :method=> :get %>
               </p>
             <% end %>
         <% end %>
