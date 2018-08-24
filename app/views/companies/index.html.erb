@@ -1,4 +1,4 @@
-<h2> All Companies </h2>
+<h2> List of All Companies </h2>
 <table>
     <% @companies.each do |company|%>
       <th>Name: <%= company.name %></th>
@@ -8,7 +8,7 @@
       <% end %>
       <%= link_to "Submit a review for this Company", new_company_review_path(company) %>
       <% if current_user.admin %>
-      <%= button_to "Delete", company_path(company), :method => :delete, :class => "delete", :confirm => "Are you sure ?"%>
+      <%= button_to "Delete Company", company_path(company), :method => :delete, :class => "delete", :confirm => "Are you sure ?"%>
       <% end %>
     </td>
     </table>

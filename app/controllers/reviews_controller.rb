@@ -18,9 +18,14 @@ class ReviewsController < ApplicationController
   def create
       if !params[:company_id]
         @review = Review.create(reviews_params)
-        @company = params[:review][:company_name]
+        # @review = current_user.reviews.create(reviews_params)
+        # @company = @review.create_company(name: params[:review][:company_name], size: params[:review][:company_size])
+        # @company.id = params[:company_id]
         @review.user_id = current_user.id
+
           if @review.save
+
+
             redirect_to company_reviews_path(@review.company), :notice => "Thank you for submitting your review"
           else
              redirect_to user_path(current_user), :notice => "boxes can't be blank"
@@ -75,7 +80,6 @@ class ReviewsController < ApplicationController
 
   def reviews_params
     params.require(:review).permit(
-      :company_name,
       :user_id,
       :company_id,
       :content,
@@ -83,6 +87,9 @@ class ReviewsController < ApplicationController
       :job_rating,
       :women_exec_roles,
       :promo_opps,
-      :recommend )
+      :recommend,
+      company_attributes: [:name,
+        :size]
+      )
   end
 end
