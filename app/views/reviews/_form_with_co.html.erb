@@ -20,11 +20,8 @@
         <datalist id= "companies_autocomplete">
             <% Company.all.each do |company| %>
             <option value="<%=company.name%>">
-              <%end%> 
+              <%end%>
         </datalist>
-      <br></br>
-      <%= company.label :size, "Company Size:" %>
-      <%= company.number_field :size %>
       <% end %>
       <br></br>
       <%= f.label :salary, "Your Salary:" %>

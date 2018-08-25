@@ -17,14 +17,14 @@ class ReviewsController < ApplicationController
 
   def create
       if !params[:company_id]
-        @review = Review.create(reviews_params)
-        @review.user_id = current_user.id
-          if @review.save
-            redirect_to company_reviews_path(@review.company), :notice => "Thank you for submitting your review"
-          else
-             redirect_to user_path(current_user), :notice => "boxes can't be blank"
-          end
-        else
+          @review = Review.create(reviews_params)
+          @review.user_id = current_user.id
+            if @review.save
+              redirect_to company_reviews_path(@review.company), :notice => "Thank you for submitting your review"
+            else
+              redirect_to user_path(current_user), :notice => "boxes can't be blank"
+            end
+      else
           @company = Company.find(params[:company_id])
           @review = @company.reviews.create(reviews_params)
           @review.user_id = current_user.id
@@ -80,8 +80,8 @@ class ReviewsController < ApplicationController
       :women_exec_roles,
       :promo_opps,
       :recommend,
-      company_attributes: [:name,
-        :size]
+      company_attributes: [:name]
+      
       )
   end
 end
