@@ -7,12 +7,12 @@ end
 resources :reviews, only: [:new, :create]
 
 resources :users do
-    resources :reviews, only: [:show]
+    resources :reviews, only: [:show ]
   end
 
 
 
-get '/auth/facebook/callback' => 'sessions#create'
+get 'auth/facebook/callback', to: 'sessions#create'
 get '/signin' => "sessions#new"
 post '/signin' => "sessions#create"
 get '/signout' => "sessions#destroy"

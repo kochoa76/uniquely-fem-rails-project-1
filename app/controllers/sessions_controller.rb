@@ -1,15 +1,12 @@
 class SessionsController < ApplicationController
 
-  def new
-    
-  end
 
   def create
         @auth = request.env["omniauth.auth"]
         if @auth
             @user = User.from_omniauth(request.env["omniauth.auth"])
             session[:user_id] = @user.id
-            render 'users/show', notice: "Successfully signed in"
+            render user_path(@user), notice: "Successfully signed in"
            else
             @user = User.find_by(email: params[:email])
             if @user && @user.authenticate(params[:password])

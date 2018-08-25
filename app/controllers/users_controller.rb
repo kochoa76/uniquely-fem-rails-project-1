@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def create
-
         @user = User.new(user_params)
         @user.username = "anonymous#{User.last.id + 1}" if @user.username.nil?
         if @user.save
