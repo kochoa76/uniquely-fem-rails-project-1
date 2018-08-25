@@ -15,7 +15,8 @@ resources :users do
 get 'auth/facebook/callback', to: 'sessions#create'
 get '/signin' => "sessions#new"
 post '/signin' => "sessions#create"
-get '/signout' => "sessions#destroy"
-post '/signout'=> "sessions#destroy"
+# get '/signout' => "sessions#destroy"
+# post '/signout'=> "sessions#destroy"
+ delete '/logout' => 'sessions#delete'
 
 end
